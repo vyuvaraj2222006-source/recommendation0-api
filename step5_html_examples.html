@@ -1,0 +1,282 @@
+<!-- 
+STEP 5: HTML INTEGRATION EXAMPLES
+==================================
+How to integrate recommendations into your e-commerce pages
+-->
+
+<!-- ============================================ -->
+<!-- EXAMPLE 1: HOMEPAGE INTEGRATION -->
+<!-- ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Store - Homepage</title>
+    <link rel="stylesheet" href="step5_recommendations_styles.css">
+</head>
+<body>
+    <!-- Your existing header -->
+    <header>
+        <nav><!-- Navigation --></nav>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <!-- Hero section -->
+        <section class="hero">
+            <h1>Welcome to Our Store</h1>
+        </section>
+
+        <!-- RECOMMENDATION SECTION 1: Popular Items -->
+        <section class="recommendations-section">
+            <h2>Popular Products</h2>
+            <div id="homepage-recommendations" class="recommendations-loading"></div>
+        </section>
+
+        <!-- Other homepage content -->
+        <section class="featured-categories">
+            <!-- Categories -->
+        </section>
+    </main>
+
+    <!-- Load recommendation client -->
+    <script src="step5_frontend_integration.js"></script>
+</body>
+</html>
+
+
+<!-- ============================================ -->
+<!-- EXAMPLE 2: PRODUCT DETAIL PAGE -->
+<!-- ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Name - E-Commerce Store</title>
+    <link rel="stylesheet" href="step5_recommendations_styles.css">
+</head>
+<body>
+    <header><!-- Navigation --></header>
+
+    <main>
+        <!-- Product details section -->
+        <section class="product-detail">
+            <input type="hidden" id="current-product-id" value="123">
+            
+            <div class="product-gallery">
+                <img src="/product/123/image.jpg" alt="Product">
+            </div>
+            
+            <div class="product-info">
+                <h1>Product Name</h1>
+                <p class="price">$99.99</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+                <div class="product-description">
+                    <!-- Description -->
+                </div>
+            </div>
+        </section>
+
+        <!-- RECOMMENDATION SECTION: Similar Products -->
+        <section class="recommendations-section">
+            <h2>Customers Who Viewed This Also Viewed</h2>
+            <div id="similar-products" class="recommendations-loading"></div>
+        </section>
+    </main>
+
+    <script src="step5_frontend_integration.js"></script>
+</body>
+</html>
+
+
+<!-- ============================================ -->
+<!-- EXAMPLE 3: USER DASHBOARD / ACCOUNT PAGE -->
+<!-- ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Account - E-Commerce Store</title>
+    <link rel="stylesheet" href="step5_recommendations_styles.css">
+</head>
+<body>
+    <header><!-- Navigation --></header>
+
+    <main class="account-page">
+        <aside class="account-sidebar">
+            <ul>
+                <li><a href="#orders">My Orders</a></li>
+                <li><a href="#wishlist">Wishlist</a></li>
+                <li><a href="#settings">Settings</a></li>
+            </ul>
+        </aside>
+
+        <div class="account-content">
+            <h1>My Dashboard</h1>
+
+            <!-- Recent orders -->
+            <section class="recent-orders">
+                <h2>Recent Orders</h2>
+                <!-- Orders list -->
+            </section>
+
+            <!-- RECOMMENDATION SECTION: Personalized for user -->
+            <section class="recommendations-section">
+                <h2>Recommended For You</h2>
+                <div id="recommended-for-you" class="recommendations-loading"></div>
+            </section>
+        </div>
+    </main>
+
+    <script src="step5_frontend_integration.js"></script>
+</body>
+</html>
+
+
+<!-- ============================================ -->
+<!-- EXAMPLE 4: SHOPPING CART PAGE -->
+<!-- ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart - E-Commerce Store</title>
+    <link rel="stylesheet" href="step5_recommendations_styles.css">
+</head>
+<body>
+    <header><!-- Navigation --></header>
+
+    <main class="cart-page">
+        <h1>Shopping Cart</h1>
+
+        <div class="cart-content">
+            <section class="cart-items">
+                <h2>Your Items</h2>
+                <!-- Cart items list -->
+                <div class="cart-item">
+                    <img src="/product/1/thumb.jpg" alt="Product 1">
+                    <div class="item-details">
+                        <h3>Product 1</h3>
+                        <p>$29.99</p>
+                        <input type="number" value="1" min="1">
+                    </div>
+                </div>
+                <!-- More items -->
+            </section>
+
+            <aside class="cart-summary">
+                <h3>Order Summary</h3>
+                <p>Subtotal: $59.98</p>
+                <p>Tax: $5.40</p>
+                <p class="total">Total: $65.38</p>
+                <button class="checkout-btn">Proceed to Checkout</button>
+            </aside>
+        </div>
+
+        <!-- RECOMMENDATION SECTION: Related products -->
+        <section class="recommendations-section">
+            <h2>You Might Also Like</h2>
+            <div id="cart-recommendations" class="recommendations-loading"></div>
+        </section>
+    </main>
+
+    <script src="step5_frontend_integration.js"></script>
+    <script>
+        // Pass cart items to exclude them from recommendations
+        const cartItemIds = [1, 2, 3]; // Get from your cart data
+        const userId = getCurrentUserId();
+        
+        if (userId) {
+            loadCartRecommendations(userId, cartItemIds);
+        }
+    </script>
+</body>
+</html>
+
+
+<!-- ============================================ -->
+<!-- EXAMPLE 5: CATEGORY PAGE -->
+<!-- ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electronics - E-Commerce Store</title>
+    <link rel="stylesheet" href="step5_recommendations_styles.css">
+</head>
+<body>
+    <header><!-- Navigation --></header>
+
+    <main class="category-page">
+        <h1>Electronics</h1>
+
+        <!-- Filters -->
+        <aside class="filters">
+            <h3>Filter By</h3>
+            <div class="filter-group">
+                <h4>Price Range</h4>
+                <input type="range" min="0" max="1000">
+            </div>
+            <div class="filter-group">
+                <h4>Brand</h4>
+                <label><input type="checkbox"> Apple</label>
+                <label><input type="checkbox"> Samsung</label>
+            </div>
+        </aside>
+
+        <!-- Products grid -->
+        <section class="products-grid">
+            <!-- Regular product listings -->
+            <div class="product-card"><!-- Product --></div>
+            <div class="product-card"><!-- Product --></div>
+            <div class="product-card"><!-- Product --></div>
+        </section>
+
+        <!-- RECOMMENDATION SECTION: Popular in category -->
+        <section class="recommendations-section">
+            <h2>Popular in Electronics</h2>
+            <div id="category-popular" class="recommendations-loading"></div>
+        </section>
+    </main>
+
+    <script src="step5_frontend_integration.js"></script>
+    <script>
+        // Load popular items for this category
+        const category = 'Electronics'; // Get from page data
+        loadCategoryRecommendations(category);
+    </script>
+</body>
+</html>
+
+
+<!-- ============================================ -->
+<!-- QUICK INTEGRATION SNIPPET -->
+<!-- ============================================ -->
+<!-- 
+Add this to ANY page to show recommendations:
+
+1. Add the CSS:
+<link rel="stylesheet" href="step5_recommendations_styles.css">
+
+2. Add a container where you want recommendations:
+<div id="homepage-recommendations"></div>
+
+3. Add the JavaScript:
+<script src="step5_frontend_integration.js"></script>
+
+4. Initialize recommendations:
+<script>
+    // For homepage
+    loadHomepageRecommendations();
+    
+    // For product page
+    loadSimilarProducts(currentProductId);
+    
+    // For logged-in users
+    const userId = getCurrentUserId();
+    if (userId) {
+        loadPersonalizedRecommendations(userId);
+    }
+</script>
+-->
