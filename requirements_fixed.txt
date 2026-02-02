@@ -1,0 +1,28 @@
+# Python Requirements for Recommendation API
+# ==========================================
+
+# Web Framework
+Flask==2.3.0
+flask-cors==4.0.0
+gunicorn==21.2.0
+
+# Data Processing
+numpy==1.24.3
+pandas==2.0.3
+scipy==1.11.1
+
+# Machine Learning
+scikit-learn==1.3.0
+
+# Utilities
+python-dateutil==2.8.2
+
+# Monitoring & Logging
+prometheus-flask-exporter==0.22.4
+
+# Testing (optional)
+pytest==7.4.0
+requests==2.31.0
+
+# Ensure setuptools is installed
+setuptools>=65.0.0
